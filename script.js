@@ -60,10 +60,12 @@ document
 
     let correoDelUsuario = document.getElementById("correo").value;
     let passDelUsuario = document.getElementById("password").value;
+    let razaUsuario = document.getElementById("razas").value;
+    console.log(razaUsuario)
 
-    let regexMail = /^([a-z0-9]+)@([a-z0-9]+).([a-z]{2,4})$/;
-    let regexPass = /^([A-Za-z0-9.#!$%&'*+=?^_`~-]{2})+$/;
-   
+    let regexMail = /^c@([a-z0-9]+).([a-z]{2,4})$/;
+    let regexPass = /^([A-Za-z0-9.#!$%&'*+=?^_`~-]{6,20})+$/;
+    let regexRaza=/^([A-Za-z])+(Humano|Enano|Elfo|Hobbit)$/
 
     checkEmail(regexMail,correoDelUsuario)
     checkPassword(regexPass,passDelUsuario)
@@ -119,5 +121,21 @@ function checkPassword(regexPass,passDelUsuario){
  
 
 }
+function checkRace(regexRaza,razaUsuario){
+
+  if (regexRaza.test(`${razaUsuario}`)) {
+    alert(" PASS CORRECTA ");
+  } else if (!regexRaza.test(`${razaUsuario}`)) {
+    alert("PASS INCORRECTA");
+  }
 
  
+
+}
+
+/* 3. Extra: Checkear raza
+Que no tenga caracteres alfanuméricos(ya que son opciones que hemos puesto para elegir)
+Que se pueda elegir entre humano, elfo, hobbit o enano
+Que haga una búsqueda global en toda la cadena Para la implementación de checkear si es una de las razas o no, en el datalist del formulario, lo relacionaremos con la función checkRace. Esta función será la que ejecute la expresión regular. Se le pasará como argumento el parámetro raceOrNot, que será el valor de la opción seleccionada del datalist */
+
+/^([A-Za-z])+(Humano|Enano|Elfo|Hobbit)$/.test('')
